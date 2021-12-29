@@ -1,4 +1,7 @@
-﻿namespace MineSweeperConVictoria
+﻿using System;
+using System.Linq;
+
+namespace MineSweeperConVictoria
 {
     public class Matrix
     {
@@ -17,8 +20,8 @@
 
         private void Initialize()
         {
-             for(int x = 0; x < Width -1; x++)
-                 for (int y = 0; y < Heigth - 1; y++)
+             for(int x = 0; x < Width; x++)
+                 for (int y = 0; y < Heigth ; y++)
                      _matrix[x, y] = new Cell('.');
         }
 
@@ -26,5 +29,12 @@
 
         public void FillWithBomb(Coordinate coord)
             => _matrix[coord.X, coord.Y] = new Cell('*');
+        
+        private string CellAsString() 
+            => String.Concat(_matrix.OfType<Cell>().Select(c => c.Value));
+        public override bool Equals(object other) 
+            => CellAsString().Equals((other as Matrix)?.CellAsString());
+        public override int GetHashCode() 
+            => CellAsString().GetHashCode();
     }
 }

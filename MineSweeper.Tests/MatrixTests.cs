@@ -35,6 +35,5 @@ namespace MineSweeper.Tests
             matrixWithBombs.Should().NotBe(matrixWithoutBombs);
             matrixWithoutBombs.Should().Be(matrixWithoutBombsTwo);
         }
-
     }
 }
