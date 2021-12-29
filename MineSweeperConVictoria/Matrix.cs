@@ -36,5 +36,10 @@ namespace MineSweeperConVictoria
             => CellAsString().Equals((other as Matrix)?.CellAsString());
         public override int GetHashCode() 
             => CellAsString().GetHashCode();
+
+        public void ChangeValue(Coordinate coordinate, int countNeighbor)
+        {
+            _matrix[coordinate.X, coordinate.Y] = new Cell(char.Parse(countNeighbor.ToString()));
+        }
     }
 }
