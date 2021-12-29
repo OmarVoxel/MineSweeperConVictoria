@@ -23,5 +23,8 @@
         }
 
         public Cell At(Coordinate coord) => _matrix[coord.X, coord.Y];
+
+        public void FillWithBomb(Coordinate coord)
+            => _matrix[coord.X, coord.Y] = new Cell('*');
     }
 }
